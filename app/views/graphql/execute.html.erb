@@ -1,0 +1,14 @@
+<% if @name["message"] || @name.is_a?(String) || @name.empty? %>
+    <p class="text-danger"> <%= "User Not Found" %> </p> 
+<% else %>
+    <span class="text-success"><%= @name["name"] %>:</br></span>
+    <% if @result.is_a?(Hash) || @result.is_a?(String) || @result.empty? %>
+        <p class="text-danger"> <%= "No Repos" %> </p>
+    <% else %> 
+        <ul>
+        <% @result.each do |repo| %> 
+        <li> <%= link_to repo["name"], "#{repo["html_url"]}", target: "_blank" %> </li>
+        <% end %>  
+        </ul> 
+    <% end%>
+<% end %>
