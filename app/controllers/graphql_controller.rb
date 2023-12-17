@@ -6,7 +6,7 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
   def index; end
-  
+
   def execute
     user_login = params[:user_login].to_s.strip
     if user_login.match?(/\A[A-Za-z0-9_-]+\z/)
@@ -14,7 +14,7 @@ class GraphqlController < ApplicationController
     query = "query { repos(userLogin: \"#{user_login}\") }"
     operation_name = params[:operationName]
     context = {}
-    result = CyberTestSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = Cyber2Schema.execute(query, variables: variables, context: context, operation_name: operation_name)
     result = result.to_h
    
     if !execute_name["errors"]
@@ -44,7 +44,7 @@ class GraphqlController < ApplicationController
     query = "query { name(userLogin: \"#{params[:user_login]}\") }"
     operation_name = params[:operationName]
     context = {}
-    result = CyberTestSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = Cyber2Schema.execute(query, variables: variables, context: context, operation_name: operation_name)
     result = result.to_h
   end
   # Handle variables in form data, JSON body, or a blank value

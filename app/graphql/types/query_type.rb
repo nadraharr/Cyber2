@@ -24,7 +24,7 @@ module Types
       argument :userLogin, String, required: true
     end
     def repos(userLogin:)
-      token = ENV['GITHUB_TOKEN']
+      token = ENV['GITHUB_TOKEN'] 
       connection = Faraday.new(url: "https://api.github.com/users/#{userLogin}/repos") do |faraday|
       faraday.headers['Content-Type'] = 'application/json'
       faraday.headers['Authorization'] = "Bearer #{token}"
