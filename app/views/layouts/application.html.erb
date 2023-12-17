@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cyber2</title>
+    <title>CyberTest</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="text-bg-dark p-3">
+    <div class="container h-100">
+    <div class="row h-100 align-items-center">
+    <div class="col-12 text-left">
+
+    <h1 class="fw-light text-secondary "><strong>GetSomeGit</strong></h1>          
+                
+              <%= form_tag '/graphql', method: 'post' do %>
+              <%= text_field_tag :user_login, nil, placeholder: 'login' %>
+              <%= submit_tag 'Search' %>
+              <% end %>
+              </br>                     
+
+    <%= yield %> 
+
+    </div>
+    </div>
+    </div>
+    
   </body>
 </html>
