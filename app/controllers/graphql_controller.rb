@@ -10,6 +10,12 @@ class GraphqlController < ApplicationController
   def execute(user_login = params[:user_login].to_s.strip)
     if user_login.match?(/\A[A-Za-z0-9_-]+\z/)
       variables = prepare_variables(params[:variables])
+      #query = "query { repos(userLogin: \"#{user_login}\") {
+      #  repo {
+      #    reponame
+      #    htmlurl
+      #  }
+      #} }"
       query = "query { repos(userLogin: \"#{user_login}\") }"
       operation_name = params[:operationName]
       context = {}

@@ -37,5 +37,21 @@ module Types
       response = connection.get
       JSON.parse(response.body)
     end
+
+    #field :repo, RepoType
+    #def repo
+    #  eval(repos(userLogin:)["data"]["repos"]).first
+    #end
+
+    #field :reponame, String, null: false
+    #def reponame
+    #  repo["name"]
+    #end
+
+    #field :htmlurl, String, null: false
+    #def htmlurl
+    #  repo["html_url"]
+    #end
+
   end
 end
