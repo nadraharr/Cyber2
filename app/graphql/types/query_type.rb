@@ -19,24 +19,23 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
-    
+
     field :repos, String, null: false do
       argument :userLogin, String, required: true
     end
     def repos(userLogin:)
       connection = Faraday.new(url: "https://api.github.com/users/#{userLogin}/repos")
       response = connection.get
-      result = JSON.parse(response.body)
+      JSON.parse(response.body)
     end
 
     field :name, String, null: false do
       argument :userLogin, String, required: true
     end
     def name(userLogin:)
-      connection = Faraday.new(url: "https://api.github.com/users/#{userLogin}") 
+      connection = Faraday.new(url: "https://api.github.com/users/#{userLogin}")
       response = connection.get
-      result = JSON.parse(response.body)
+      JSON.parse(response.body)
     end
-
   end
 end
